@@ -10,8 +10,13 @@
   "attributes": {
     "message": {
       "type": "string",
-      "source": "text",
-      "selector": "div"
+      "default": "Def String",
+      "source": "html",
+      "selector": "p"
+    },
+    "alignment": {
+      "type": "string",
+      "default": "center"
     }
   },
   "supports": {
