@@ -11,7 +11,7 @@ import { TextControl } from '@wordpress/components';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText, BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -25,12 +25,17 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit( props , { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
 	return (
 		<div { ...blockProps }>
-			<TextControl
-				value={ attributes.message }
+			<BlockControls>
+				<AlignmentToolbar />
+			</BlockControls>
+			<RichText	
+				className='form-control'
+				tagName='p'			
+				value={ props.attributes.message }
 				onChange={ ( val ) => setAttributes( { message: val } ) }
 			/>
 		</div>
