@@ -46,14 +46,37 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {WPElement} Element to render.
  */
-function Edit(_ref) {
+function Edit(props, _ref) {
+  var _props$attributes$ali;
   let {
     attributes,
     setAttributes
   } = _ref;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
-    value: attributes.message,
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentToolbar, {
+    value: (_props$attributes$ali = props.attributes.alignment) !== null && _props$attributes$ali !== void 0 ? _props$attributes$ali : 'none',
+    onChange: newAlignment => props.setAttributes({
+      alignment: newAlignment
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    key: "controls"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Background: ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    onChange: newColor => props.setAttributes({
+      bg_color: newColor === undefined ? "#fff" : newColor
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Foreground: ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    onChange: newColor => props.setAttributes({
+      for_color: newColor === undefined ? "#fff" : newColor
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "form-control",
+    style: {
+      textAlign: props.attributes.alignment,
+      backgroundColor: props.attributes.bg_color,
+      color: props.attributes.for_color
+    },
+    tagName: "p",
+    value: props.attributes.message,
     onChange: val => setAttributes({
       message: val
     })
@@ -113,11 +136,10 @@ __webpack_require__.r(__webpack_exports__);
   title: 'custom-gutenpride',
   category: 'text',
   icon: 'smiley',
-  example: {
-    attributes: {
-      message: 'Custom Gutenpride'
-    }
-  },
+  /**
+   * attributes
+   */
+
   /**
    * @see ./edit.js
    */
@@ -164,12 +186,20 @@ __webpack_require__.r(__webpack_exports__);
  * @param {Object} props.attributes Available block attributes.
  * @return {WPElement} Element to render.
  */
-function save(_ref) {
+function save(props, _ref) {
   let {
     attributes
   } = _ref;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, attributes.message);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, attributes.message, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "p",
+    value: attributes.message,
+    style: {
+      textAlign: props.attributes.alignment,
+      backgroundColor: props.attributes.bg_color,
+      color: props.attributes.for_color
+    }
+  }));
 }
 
 /***/ }),
@@ -244,7 +274,7 @@ module.exports = window["wp"]["element"];
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/custom-gutenpride","version":"0.1.0","title":"Custom Gutenpride","category":"text","icon":"flag","description":"A Gutenberg block to show your pride! This block enables you to type text and style it with the color font Gilbert from Type with Pride.","attributes":{"message":{"type":"string","source":"text","selector":"div"}},"supports":{"html":false},"textdomain":"custom-gutenpride","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/custom-gutenpride","version":"0.1.0","title":"Custom Gutenpride","category":"text","icon":"flag","description":"A Gutenberg block to show your pride! This block enables you to type text and style it with the color font Gilbert from Type with Pride.","attributes":{"message":{"type":"string","default":"default String","source":"html","selector":"p"}},"supports":{"html":false,"typography":{"fontSize":true,"lineHeight":true},"spacing":{"margin":true,"padding":true},"alignment":{"type":"string","default":"center"},"bg_color":{"type":"string","default":"#000000"},"for_color":{"type":"string","default":"#ffffff"}},"textdomain":"custom-gutenpride","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

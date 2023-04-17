@@ -35,11 +35,11 @@ registerBlockType( metadata.name, {
 	title:'custom-gutenpride',
 	category:'text',
 	icon:'smiley',
-	example: {
-		attributes: {
-			message: 'Custom Gutenpride',
-		},
-	},
+
+	/**
+	 * attributes
+	 */
+	
 	/**
 	 * @see ./edit.js
 	 */
