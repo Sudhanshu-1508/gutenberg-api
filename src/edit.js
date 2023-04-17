@@ -11,7 +11,7 @@ import { TextControl } from '@wordpress/components';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, RichText, BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
+import { useBlockProps, RichText, BlockControls, AlignmentToolbar, ColorPalette, InspectorControls } from '@wordpress/block-editor';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -30,10 +30,27 @@ export default function Edit( props , { attributes, setAttributes } ) {
 	return (
 		<div { ...blockProps }>
 			<BlockControls>
-				<AlignmentToolbar />
+			<AlignmentToolbar
+  				value={props.attributes.alignment ?? 'none'}
+  				onChange={(newAlignment) =>
+    			props.setAttributes({ alignment: newAlignment })} 																
+			/>
 			</BlockControls>
+			<InspectorControls key="controls">
+				<label>
+					Background: <ColorPalette onChange={(newColor) => props.setAttributes({
+						bg_color: newColor === undefined ? "#fff" : newColor,
+					})}/>
+				</label>
+				<label>
+					Foreground: <ColorPalette onChange={(newColor) => props.setAttributes({
+						for_color: newColor === undefined ? "#fff" : newColor,
+					})}/>
+				</label>
+			</InspectorControls>
 			<RichText	
 				className='form-control'
+				style={{ textAlign: props.attributes.alignment , backgroundColor: props.attributes.bg_color, color: props.attributes.for_color}}
 				tagName='p'			
 				value={ props.attributes.message }
 				onChange={ ( val ) => setAttributes( { message: val } ) }

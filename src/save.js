@@ -17,11 +17,12 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
  * @param {Object} props.attributes Available block attributes.
  * @return {WPElement} Element to render.
  */
-export default function save( { attributes } ) {
+export default function save( props, { attributes } ) {
 	const blockProps = useBlockProps.save();
 	return <div 
 	{ ...blockProps }>{ attributes.message }
-	<RichText.Content tagName='p' value={attributes.message} />
+	<RichText.Content tagName='p' value={attributes.message} 
+	style={{ textAlign: props.attributes.alignment, backgroundColor: props.attributes.bg_color, color: props.attributes.for_color}} />
 	
 	</div>;
 }

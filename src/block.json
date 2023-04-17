@@ -10,18 +10,34 @@
 	"attributes": {
 		"message": {
 			"type": "string",
-			"default":"Def String",
+			"default":"default String",
 			"source": "html",
 			"selector": "p"
-		},
-		"alignment" : {
-			"type":"string",
-			"default":"center"
 		}
 
 	},
 	"supports": {
-		"html": false
+		"html": false,
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"spacing": {
+			"margin":true,
+			"padding":true
+		},
+		"alignment" : {
+			"type":"string",
+			"default":"center"
+		},
+		"bg_color": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"for_color": {
+			"type":"string",
+			"default":"#ffffff"
+		}
 	},
 	"textdomain": "custom-gutenpride",
 	"editorScript": "file:./index.js",
