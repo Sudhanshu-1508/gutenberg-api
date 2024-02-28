@@ -1,0 +1,17 @@
+{
+    "name": "sudha/custom-gutenpride",
+    "autoload": {
+        "psr-4": {
+            "Sudha\\CustomGutenpride\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sudhanshu-1508",
+            "email": "sudhanshukulkarni55@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7"
+    }
+}

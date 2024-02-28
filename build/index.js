@@ -113,9 +113,23 @@ __webpack_require__.r(__webpack_exports__);
   title: 'custom-gutenpride',
   category: 'text',
   icon: 'smiley',
-  example: {
-    attributes: {
-      message: 'Custom Gutenpride'
+  /**
+   * attributes
+   */
+  attributes: {
+    content: {
+      type: 'string',
+      source: 'html',
+      selector: 'h2'
+    }
+  },
+  "supports": {
+    //supports for the block
+    align: ['wide', 'full'],
+    "color": {
+      "text": true,
+      "background": true,
+      "link": true
     }
   },
   /**
