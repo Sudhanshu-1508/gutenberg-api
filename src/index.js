@@ -39,7 +39,7 @@ registerBlockType( metadata.name, {
 	/**
 	 * attributes
 	 */
-	attributes: {
+	/*attributes: {
         content: {
             type: 'string',
             source: 'html',
@@ -47,7 +47,7 @@ registerBlockType( metadata.name, {
         },
     },
 
-
+*/
     "supports": { //supports for the block
         align: [ 'wide', 'full' ],
         "color": {
